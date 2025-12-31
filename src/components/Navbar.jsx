@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    if (!token) {
+    if (!isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
   };
