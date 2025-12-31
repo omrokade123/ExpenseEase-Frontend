@@ -6,6 +6,7 @@ import BudgetCard from "../components/BudgetCard.jsx";
 import ExpensePieChart from "../components/ExpensePieChart.jsx";
 
 const Dashboard = () => {
+  const token = localStorage.getItem("token");
   const [expense, setExpense] = useState([]);
   const [budgets, setBudgets] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0);
@@ -107,8 +108,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+    if (!token) return; 
     fetchData();
-  }, []);
+  }, [token]);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">

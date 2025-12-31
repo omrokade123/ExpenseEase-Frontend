@@ -3,7 +3,7 @@ import { useNavigate,Link } from "react-router-dom";
 import API from "../services/api.js";
 import '../assets/global.css';
 
-const Login = () => {
+const Login = ({setIsAuthenticated}) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ const Login = () => {
     try{
        const response = await API.post('/login',formData);
        localStorage.setItem('token',response.data.token);
-    
-        window.location.href = '/';
+       setIsAuthenticated(true);
+        navigate("/",{replace:true});
     }catch(err){
       setError(err.response?.data?.error || "Login failed");
     }

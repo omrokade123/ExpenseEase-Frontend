@@ -8,26 +8,41 @@ import EditExpense from './pages/EditExpense.jsx';
 import Budget from './pages/Budget.jsx';
 import Footer from './components/Footer.jsx';
 import './App.css';
+import { useEffect, useState } from "react";
 
 
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem('token');
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
+  }, []);
 
   return (
     <>
-      {isAuthenticated && <Navbar />} {/* Only show Navbar if logged in */}
+       {isAuthenticated && <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />}
+
       <Routes>
-        <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" />} />
-        <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/" />} />
-        
+        <Route
+          path="/login"
+          element={!isAuthenticated ? <Login setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/register"
+          element={!isAuthenticated ? <Register /> : <Navigate to="/" />}
+        />
+
         {/* Protected Routes */}
         <Route path="/" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/addExpense" element={isAuthenticated ? <AddExpense /> : <Navigate to="/login" />} />
-        <Route path='/editExpense/:id' element={isAuthenticated ? <EditExpense/> : <Navigate to='/login'/> }/>
-        <Route path='/setBudget' element={isAuthenticated ? <Budget/> : <Navigate to='/login'/> }/>
+        <Route path="/editExpense/:id" element={isAuthenticated ? <EditExpense /> : <Navigate to="/login" />} />
+        <Route path="/setBudget" element={isAuthenticated ? <Budget /> : <Navigate to="/login" />} />
       </Routes>
-     {isAuthenticated && <Footer />}
+
+      {isAuthenticated && <Footer />}
     </>
   )
 }
