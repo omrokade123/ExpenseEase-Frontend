@@ -141,9 +141,9 @@ npm start
 
 
 ## 👨‍💻 Author
-# Om Rokade
-# Final-year Computer Engineering Student
-# MERN Stack Developer
+- Om Rokade
+- Final-year Computer Engineering Student
+- MERN Stack Developer
 
 ## ⭐ Support
 - If you like this project, please consider giving it a ⭐ on GitHub!
