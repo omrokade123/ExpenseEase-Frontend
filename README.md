@@ -1,16 +1,178 @@
-# React + Vite
+💸 ExpenseEase – Smart Expense & Budget Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ExpenseEase is a full-stack MERN application that helps users track daily expenses, manage category-wise budgets, and gain clear insights into their spending habits through an intuitive dashboard and visual analytics.
 
-Currently, two official plugins are available:
+🔗 Live Demo: https://expense-ease-frontend-mu.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
 
-## React Compiler
+🔐 Secure authentication & authorization using JWT
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🧾 Add, update, and delete expenses (CRUD)
 
-## Expanding the ESLint configuration
+📊 Category-wise expense visualization (charts)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+💰 Monthly budget setting per category
+
+🚨 Over-budget alerts with visual indicators
+
+📅 Date-wise expense tracking
+
+🧠 Smart dashboard with totals & summaries
+
+🧼 Clean empty states & graceful error handling
+
+📱 Responsive and user-friendly UI
+
+🛠 Tech Stack
+Frontend
+
+React.js
+
+React Router
+
+Chart.js / Recharts
+
+Tailwind CSS
+
+Axios
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB
+
+Mongoose
+
+JWT Authentication
+
+bcrypt for password hashing
+
+Deployment
+
+Frontend: Vercel
+
+Backend: Render / Railway
+
+Database: MongoDB Atlas
+
+🧠 Architecture Overview
+
+Frontend handles UI rendering, form validation, and conditional states
+
+Backend manages:
+
+Business logic
+
+Data aggregation
+
+Authentication & authorization
+
+JWT middleware protects secured routes
+
+MongoDB indexes improve query performance
+
+APIs are stateless, enabling horizontal scalability
+
+⚙️ Core Business Logic
+
+Expense totals and category summaries are calculated on the backend
+
+Budget validation ensures accurate over-limit detection
+
+Duplicate budgets for the same category & month are prevented
+
+Dashboard receives aggregated data, not raw records, for efficiency
+
+🔐 Security Measures
+
+Passwords hashed using bcrypt
+
+JWT-based authentication
+
+Protected API routes via middleware
+
+Environment variables for sensitive credentials
+
+User-specific data isolation using userId
+
+📈 Scalability Considerations
+
+MongoDB indexing on userId, date, and category
+
+Pagination for transaction lists
+
+Aggregated APIs for dashboards
+
+Ready for Redis caching & load balancing
+
+Frontend optimized with component-level re-renders
+
+🧪 Edge Case Handling
+
+🔴 Visual alert when expenses exceed budget
+
+🪹 Clean empty states for new users
+
+⚠️ Graceful UI fallback on API failure
+
+📭 Zero-data dashboard support
+
+🕒 Date consistency handling across timezones
+
+
+🏁 Getting Started (Local Setup)
+1️⃣ Clone the repository
+git clone https://github.com/your-username/expense-ease.git
+
+2️⃣ Install dependencies
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd frontend
+npm install
+
+3️⃣ Configure environment variables
+
+Create a .env file in the backend:
+
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+
+4️⃣ Run the application
+# Backend
+npm run dev
+
+# Frontend
+npm start
+
+🔮 Future Enhancements
+
+Advanced analytics & reports
+
+Export expenses (PDF / CSV)
+
+Role-based access control
+
+Notifications & reminders
+
+Dark mode
+
+Mobile app version
+
+👨‍💻 Author
+
+Om Rokade
+Final-year Computer Engineering student
+MERN Stack Developer
+
+📌 Passionate about building scalable, user-centric web applications.
+
+⭐ If you like this project
+
+Give it a star ⭐ — it motivates me to build more!
