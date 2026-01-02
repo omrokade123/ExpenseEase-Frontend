@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { useNavigate,Link } from "react-router-dom";
 import API from "../services/api.js";
 import '../assets/global.css';
+import toast from "react-hot-toast";
 
 const Login = ({setIsAuthenticated}) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -17,8 +18,10 @@ const Login = ({setIsAuthenticated}) => {
        const response = await API.post('/login',formData);
        localStorage.setItem('token',response.data.token);
        setIsAuthenticated(true);
-        navigate("/",{replace:true});
+       toast.success("Login Successful!");
+       navigate("/",{replace:true});
     }catch(err){
+      toast.error("Invalid credentials.");
       setError(err.response?.data?.error || "Login failed");
     }
   }

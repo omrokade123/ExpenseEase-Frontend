@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import API from '../services/api';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const EditExpense = () => {
   const {id} = useParams();
@@ -26,8 +27,10 @@ const EditExpense = () => {
     setLoading(true);
     try {
       await API.put(`/expense/${id}`, formData);
+      toast.success("Expense updated successfully!");
       navigate("/");
     } catch (err) {
+      toast.error("Error while updating expense.");
       setError(err.response?.data?.error || "Failed to add expense");
     } finally {
       setLoading(false);

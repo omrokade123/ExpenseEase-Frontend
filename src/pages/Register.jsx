@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import API from '../services/api.js';
 import '../assets/global.css';
+import toast from 'react-hot-toast';
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: '', photo: '', password: '' });
@@ -16,8 +17,10 @@ const Register = () => {
     try {
       const response = await API.post('/register', formData);
       localStorage.setItem('token', response.data.token);
+      toast.success("Registration Successfull!");
       window.location.href = '/';
     } catch (err) {
+      toast.error("Invalid credentials.");
       setError(err.response?.data?.error || "Registration failed");
     }
   };

@@ -9,6 +9,7 @@ import Budget from './pages/Budget.jsx';
 import Footer from './components/Footer.jsx';
 import './App.css';
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -23,8 +24,9 @@ function App() {
 
   return (
     <>
+      
        {isAuthenticated && <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />}
-
+       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route
           path="/login"

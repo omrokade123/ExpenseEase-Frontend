@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddExpense = () => {
   const navigate = useNavigate();
@@ -27,8 +28,10 @@ const AddExpense = () => {
     setLoading(true);
     try {
       await API.post("/expense", formData);
+      toast.success("Expense added successfully!");
       navigate("/");
     } catch (err) {
+      toast.error("Invalid data.");
       setError(err.response?.data?.error || "Failed to add expense");
     } finally {
       setLoading(false);

@@ -4,6 +4,7 @@ import ExpenseCard from "../components/ExpenseCard.jsx";
 import { useNavigate } from "react-router-dom";
 import BudgetCard from "../components/BudgetCard.jsx";
 import ExpensePieChart from "../components/ExpensePieChart.jsx";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const token = localStorage.getItem("token");
@@ -97,7 +98,9 @@ const Dashboard = () => {
       const updatedList = expense.filter((e) => e._id !== id);
       setExpense(updatedList);
       calculateTotal(updatedList);
+      toast.success("Expense deleted Successfully!");
     } catch (err) {
+      toast.error(err);
       console.error(err);
     }
   };

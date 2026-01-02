@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false); // 🔥 force App re-render
+    toast.success("Logout SuccessFull!");
     navigate("/login", { replace: true });
   };
 
